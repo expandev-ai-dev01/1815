@@ -7,12 +7,15 @@
  */
 
 import { Router } from 'express';
+import * as gradeController from '@/api/v1/internal/grade/controller';
 
 const router = Router();
 
-// Feature routes will be added here as they are implemented
-// Example:
-// import gradeRoutes from './gradeRoutes';
-// router.use('/grade', gradeRoutes);
+// Grade routes - /api/v1/internal/grade
+router.get('/grade', gradeController.listHandler);
+router.post('/grade', gradeController.createHandler);
+router.get('/grade/:id', gradeController.getHandler);
+router.put('/grade/:id', gradeController.updateHandler);
+router.delete('/grade/:id', gradeController.deleteHandler);
 
 export default router;

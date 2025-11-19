@@ -1,11 +1,39 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 
 export const RootLayout = () => {
+  const location = useLocation();
+
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="border-b border-gray-200 bg-white">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl font-bold text-gray-900">GradeBox</h1>
+          <div className="flex items-center justify-between">
+            <Link to="/" className="text-2xl font-bold text-gray-900">
+              GradeBox
+            </Link>
+            <nav className="flex gap-4">
+              <Link
+                to="/"
+                className={`rounded-md px-3 py-2 text-sm font-medium ${
+                  location.pathname === '/'
+                    ? 'bg-blue-100 text-blue-700'
+                    : 'text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                Home
+              </Link>
+              <Link
+                to="/grades"
+                className={`rounded-md px-3 py-2 text-sm font-medium ${
+                  location.pathname === '/grades'
+                    ? 'bg-blue-100 text-blue-700'
+                    : 'text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                Notas
+              </Link>
+            </nav>
+          </div>
         </div>
       </header>
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
